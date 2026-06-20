@@ -1,26 +1,26 @@
 @echo off
+chcp 65001 >nul
 setlocal
 
-:: Solicita os dados ao usuário
-set /p projectNumber="Digite o numero do projeto: "
+set /p projectNumber="Digite o numero da FDC: "
 set /p featureNumber="Digite o numero da feature: "
 set /p projectName="Digite o nome do projeto: "
 set /p hldLink="Digite a URL do HLD: "
 
-:: Obtém o diretório onde o script está localizado
-
 set "scriptDir=%~dp0"
-
-:: Define o nome da pasta modelo e da nova pasta do projeto
-
 set "modelFolder=%scriptDir%! MODELO"
 set "newProjectFolder=%scriptDir%PROJETO X"
+set "finalProjectFolder=%scriptDir%FDC - %projectNumber% (%featureNumber%) - %projectName%"
 
-:: Copia a pasta modelo para a nova pasta do projeto
+if exist "%finalProjectFolder%" (
+    echo.
+    echo ERRO: A pasta ja existe:
+    echo %finalProjectFolder%
+    pause
+    exit /b
+)
 
 xcopy "%modelFolder%" "%newProjectFolder%" /E /I /H
-
-:: Renomeia os arquivos dentro da nova pasta do projeto
 
 ren "%newProjectFolder%\05 - OUTROS DOCUMENTOS\FDC XXX - XXXXXX - ANALISE.txt" "FDC-%projectNumber% - %featureNumber% - ANALISE.txt"
 ren "%newProjectFolder%\02 - RFC CHG00\CHGXXX - FDC-XXXX-XXXX - Firewall Rules.xlsx" "Firewall Rules - CHG000XXXXX - FDC-%projectNumber% - %featureNumber% - v01.xlsx"
@@ -28,17 +28,81 @@ ren "%newProjectFolder%\02 - RFC CHG00\MOP - CHG000XXXXX - v01.docx" "MOP - CHG0
 ren "%newProjectFolder%\02 - RFC CHG00\MOP - CHG000XXXXX - v01.xlsx" "MOP - CHG000XXXXX - FDC-%projectNumber% - %featureNumber% - v01.xlsx"
 ren "%newProjectFolder%\01 - ESCOPO\FDC XXX - XXXXXX - ESCOPO.xlsx" "FDC-%projectNumber% - %featureNumber% - ESCOPO.xlsx"
 
-:: Renomeia a pasta do projeto
-
-set "finalProjectFolder=%scriptDir%FDC - %projectNumber% (%featureNumber%) - %projectName%"
 ren "%newProjectFolder%" "FDC - %projectNumber% (%featureNumber%) - %projectName%"
-
-:: Cria o arquivo .url
 
 set "urlFileName=URL - DevOPs - FDC-%projectNumber% - %featureNumber%.url"
 set "urlFilePath=%finalProjectFolder%\05 - OUTROS DOCUMENTOS\%urlFileName%"
+
 echo [InternetShortcut] > "%urlFilePath%"
 echo URL=https://vale-devops.visualstudio.com/Global Telecom and Industrial Connectivity/_workitems/edit/%featureNumber% >> "%urlFilePath%"
 
-echo Projeto configurado com sucesso: %finalProjectFolder%
+set "obsidianFile=%finalProjectFolder%\FDC-%projectNumber% - Engenharia.md"
+
+echo # FDC-%projectNumber% - %projectName% > "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 1. Informações Gerais >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ^| Campo ^| Informação ^| >> "%obsidianFile%"
+echo ^|---^|---^| >> "%obsidianFile%"
+echo ^| FDC ^| %projectNumber% ^| >> "%obsidianFile%"
+echo ^| Feature / ID ^| %featureNumber% ^| >> "%obsidianFile%"
+echo ^| Nome do Projeto ^| %projectName% ^| >> "%obsidianFile%"
+echo ^| HLD LeanIX ^| %hldLink% ^| >> "%obsidianFile%"
+echo ^| Status ^| 🟡 Em análise ^| >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 2. Objetivo da Demanda >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 3. Arquitetura / HLD >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo Link HLD: %hldLink% >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 4. Fluxos de Comunicação >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ^| Origem ^| Destino ^| Porta ^| Protocolo ^| Sentido ^| Justificativa ^| >> "%obsidianFile%"
+echo ^|---^|---^|---^|---^|---^|---^| >> "%obsidianFile%"
+echo ^|  ^|  ^|  ^|  ^|  ^|  ^| >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 5. Checklist Técnico >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo - [ ] Origem validada >> "%obsidianFile%"
+echo - [ ] Destino validado >> "%obsidianFile%"
+echo - [ ] Porta validada >> "%obsidianFile%"
+echo - [ ] Proxy avaliado >> "%obsidianFile%"
+echo - [ ] SSL Inspection avaliado >> "%obsidianFile%"
+echo - [ ] NAT avaliado >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 6. RFC / MOP >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo - CHG: >> "%obsidianFile%"
+echo - MOP criado: [ ] >> "%obsidianFile%"
+echo - MOP aprovado: [ ] >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 7. Testes >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ```powershell >> "%obsidianFile%"
+echo Test-NetConnection destino -Port porta >> "%obsidianFile%"
+echo ``` >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 8. Evidências >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo - [ ] HLD anexado >> "%obsidianFile%"
+echo - [ ] Aprovação arquiteto >> "%obsidianFile%"
+echo - [ ] Testes salvos >> "%obsidianFile%"
+echo - [ ] Logs salvos >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 9. Lições Aprendidas >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## 10. Histórico >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ^| Data ^| Alteração ^| Responsável ^| >> "%obsidianFile%"
+echo ^|---^|---^|---^| >> "%obsidianFile%"
+
+echo.
+echo Projeto configurado com sucesso:
+echo %finalProjectFolder%
+
+echo.
+echo Status do Git:
+git status
+
 pause
