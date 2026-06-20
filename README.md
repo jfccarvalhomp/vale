@@ -1,2 +1,2 @@
-# vale
-Vale script repository
+# VALE
+
