@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "458260af1a32c106",
+        "id": "407dd7f03fed0d9b",
         "type": "tabs",
         "children": [
           {
-            "id": "4efb7850e93c1974",
+            "id": "e8ff0c771c097ea0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930 - Dashboard.md.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "FDC-7930 - Dashboard.md"
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930 - Dashboard.md.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for FDC-7930 - Dashboard.md"
             }
           },
           {
@@ -108,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930 - Dashboard.md.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from FDC-7930 - Dashboard.md"
             }
           },
           {
@@ -150,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930 - Dashboard.md.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of FDC-7930 - Dashboard.md"
             }
           }
         ]
@@ -176,6 +183,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "4efb7850e93c1974",
-  "lastOpenFiles": []
+  "active": "e8ff0c771c097ea0",
+  "lastOpenFiles": [
+    "00 - Templates/Template - Engenharia FDC.md",
+    "00 - Conhecimento/Processos",
+    "00 - Conhecimento/Redes",
+    "00 - Conhecimento/Tecnologias",
+    "00 - Conhecimento",
+    "00 - Templates",
+    "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA - FDC-7930 - Analise.md.md",
+    "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930 - Dashboard.md.md",
+    "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930.md.md",
+    "FDC - 7930 (2110696) - INTEGRAÇÃO CORDANT PREDITIVA/FDC-7930.md.md"
+  ]
 }
