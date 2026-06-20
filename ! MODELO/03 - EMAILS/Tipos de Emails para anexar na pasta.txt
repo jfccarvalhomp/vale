@@ -1,0 +1,4 @@
+- Email de envio de Escopo
+- Email de aprovação de Escopo
+- Email de transição de Status
+- Email de Encerramento
