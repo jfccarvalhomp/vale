@@ -105,4 +105,67 @@ echo.
 echo Status do Git:
 git status
 
+:: Cria nota de Engenharia da FDC para o Obsidian
+
+set "obsidianFile=%finalProjectFolder%\FDC-%projectNumber% - Engenharia.md"
+
+echo # FDC-%projectNumber% - %projectName% > "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Informações Gerais >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ^| Campo ^| Informação ^| >> "%obsidianFile%"
+echo ^|---^|---^| >> "%obsidianFile%"
+echo ^| FDC ^| %projectNumber% ^| >> "%obsidianFile%"
+echo ^| Feature / ID ^| %featureNumber% ^| >> "%obsidianFile%"
+echo ^| Projeto ^| %projectName% ^| >> "%obsidianFile%"
+echo ^| HLD LeanIX ^| %hldLink% ^| >> "%obsidianFile%"
+echo ^| Status ^| Em análise ^| >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Objetivo da Demanda >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Arquitetura / HLD >> "%obsidianFile%"
+echo Link HLD: %hldLink% >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Fluxos de Comunicação >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ^| Origem ^| Destino ^| Porta ^| Protocolo ^| Sentido ^| Justificativa ^| >> "%obsidianFile%"
+echo ^|---^|---^|---^|---^|---^|---^| >> "%obsidianFile%"
+echo ^|  ^|  ^|  ^|  ^|  ^|  ^| >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Checklist Técnico >> "%obsidianFile%"
+echo - [ ] Origem validada >> "%obsidianFile%"
+echo - [ ] Destino validado >> "%obsidianFile%"
+echo - [ ] Porta validada >> "%obsidianFile%"
+echo - [ ] Proxy avaliado >> "%obsidianFile%"
+echo - [ ] SSL Inspection avaliado >> "%obsidianFile%"
+echo - [ ] NAT avaliado >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## RFC / MOP >> "%obsidianFile%"
+echo - CHG: >> "%obsidianFile%"
+echo - MOP criado: [ ] >> "%obsidianFile%"
+echo - MOP aprovado: [ ] >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Testes >> "%obsidianFile%"
+echo Test-NetConnection destino -Port porta >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Evidências >> "%obsidianFile%"
+echo - [ ] HLD anexado >> "%obsidianFile%"
+echo - [ ] Aprovação arquiteto >> "%obsidianFile%"
+echo - [ ] Testes salvos >> "%obsidianFile%"
+echo - [ ] Logs salvos >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Lições Aprendidas >> "%obsidianFile%"
+echo. >> "%obsidianFile%"
+echo ## Histórico >> "%obsidianFile%"
+echo ^| Data ^| Alteração ^| Responsável ^| >> "%obsidianFile%"
+echo ^|---^|---^|---^| >> "%obsidianFile%"
+echo ^| %date% ^| Criação da estrutura da FDC ^| Jefferson ^| >> "%obsidianFile%"
+
+echo.
+echo Nota Obsidian criada:
+echo %obsidianFile%
+
+echo.
+echo Status do Git:
+git status
 pause
